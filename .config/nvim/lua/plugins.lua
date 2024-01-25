@@ -6,7 +6,7 @@ return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 
 	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.0',
+		'nvim-telescope/telescope.nvim', tag = '0.1.5',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
 
@@ -45,5 +45,17 @@ return require('packer').startup(function(use)
     use {'nvim-tree/nvim-web-devicons'}
     use {'vim-airline/vim-airline' }
     use {'vim-airline/vim-airline-themes'}
+
+    use {
+      "someone-stole-my-name/yaml-companion.nvim",
+      requires = {
+          { "neovim/nvim-lspconfig" },
+          { "nvim-lua/plenary.nvim" },
+          { "nvim-telescope/telescope.nvim" },
+      },
+      config = function()
+        require("telescope").load_extension("yaml_schema")
+      end,
+    }
 
 end)
